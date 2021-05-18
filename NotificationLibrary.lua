@@ -14,7 +14,7 @@ local NotificationUI = Instance.new("ScreenGui")
 local Container = Instance.new("Frame")
 local UIListLayout = Instance.new("UIListLayout")
 
-syn.protect_gui(NotificationUI)
+if syn and syn.protect_gui then syn.protect_gui(NotificationUI) end
 
 NotificationUI.Name = "NotificationUI"
 NotificationUI.Parent = game.CoreGui
