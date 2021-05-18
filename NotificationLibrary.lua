@@ -1,3 +1,9 @@
+--[[
+    USAGE
+    1. loadstring(game:HttpGet('https://raw.githubusercontent.com/strawbberrys/LuaScripts/main/NotificationLibrary.lua', true))()
+    2. Notification:Create('Title', 'Description', 3, Color3.fromRGB(255, 255, 255))
+]]
+
 if Notification then return end
 
 getgenv().Notification = {}
@@ -146,5 +152,3 @@ function Notification:Create(Title, Description, Length, Color)
 
     LineTween:Play()
 end
-
--- Notification:Create('Title', 'Description', 3, Color3.fromRGB(255, 255, 255))
