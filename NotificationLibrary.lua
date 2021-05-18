@@ -146,3 +146,5 @@ function Notification:Create(Title, Description, Length, Color)
 
     LineTween:Play()
 end
+
+-- Notification:Create('Title', 'Description', 3 -> Length, Color3.fromRGB(255, 255, 255) -> Optional custom color value
