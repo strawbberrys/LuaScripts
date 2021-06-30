@@ -24,9 +24,3 @@ local DumpTable; do
         return table.concat(TableDump)
     end
 end
-
-local old = os.clock()
-for i = 1, 1000 do
-    DumpTable(getgenv())
-end
-print(os.clock() - old)
