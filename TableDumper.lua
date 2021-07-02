@@ -16,12 +16,12 @@ local DumpTable; do
 
             local FixedValue = ((type(Value) == "string" or type(Value) == "function") and "\"" .. tostring(Value) .. "\"" or tostring(Value))
             local Data = table.concat(((type(Value) ~= "table" and {"[\"" .. tostring(Index) .. "\"] = ", FixedValue}) or {"[\"" .. tostring(Index) .. "\"] = ", DumpTable(Value, IndentAmount + 1)}))
-            local Key = {Indent, ((type(Value) ~= "table" and table.concat({Data, ((Amount ~= TableAmount and ",\n") or "")})) or Data)}
+            local Key = Indent .. ((type(Value) ~= "table" and Data .. ((Amount ~= TableAmount and ",\n") or "")) or Data)
 
-            TableDump[#TableDump + 1] = table.concat(Key)
+            TableDump[#TableDump + 1] = Key
         end
 
-        TableDump[#TableDump + 1] = table.concat({((TableAmount > 0 and "\n") or ""), (((IndentAmount > 1 and TableAmount > 0) and table.concat({("    "):rep(IndentAmount - 1), Ending}) or table.concat({Ending, ((TableAmount == 0 and ",\n") or "")})))})
+        TableDump[#TableDump + 1] = table.concat({((TableAmount > 0 and "\n") or ""), (((IndentAmount > 1 and TableAmount > 0) and ("    "):rep(IndentAmount - 1) .. Ending or Ending .. ((TableAmount == 0 and ",\n") or "")))})
 
         return table.concat(TableDump)
     end
