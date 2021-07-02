@@ -15,7 +15,7 @@ local DumpTable; do
             Amount = Amount + 1
 
             local FixedValue = ((type(Value) == "string" or type(Value) == "function") and "\"" .. tostring(Value) .. "\"" or tostring(Value))
-            local Data = table.concat(((type(Value) ~= "table" and {"[\"" .. tostring(Index) .. "\"] = ", FixedValue}) or {"[\"" .. tostring(Index) .. "\"] = ", DumpTable(Value, IndentAmount + 1)}))
+            local Data = ((type(Value) ~= "table" and "[\"" .. tostring(Index) .. "\"] = " .. FixedValue or "[\"" .. tostring(Index) .. "\"] = " .. DumpTable(Value, IndentAmount + 1)))
             local Key = Indent .. ((type(Value) ~= "table" and Data .. ((Amount ~= TableAmount and ",\n") or "")) or Data)
 
             TableDump[#TableDump + 1] = Key
