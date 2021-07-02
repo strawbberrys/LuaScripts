@@ -1,4 +1,4 @@
--- You can use this as a stand-alone function or use it from a module, just run DumpTable(Table) and it will return that table converted to a string
+-- You can use this as a stand-alone function by removing the return at the end or use it from a module, just run DumpTable(Table) and it will return that table converted to a string
 
 local DumpTable; do
     DumpTable = function(Table, IndentAmount)
@@ -26,3 +26,5 @@ local DumpTable; do
         return table.concat(TableDump)
     end
 end
+
+return DumpTable
