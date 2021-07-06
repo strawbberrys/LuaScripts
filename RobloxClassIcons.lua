@@ -1,4 +1,4 @@
--- A dictonary of class names and their ImageRectOffset value from the rbxasset://textures/ClassImages.png image
+-- A dictonary of class names and their ImageRectOffset value from the rbxasset://textures/ClassImages.png image, all of the ImageRectSize values are Vector2.new(16, 16)
 
 local ClassIcons = {
     ["Vector3Value"] = Vector2.new(64, 0),
