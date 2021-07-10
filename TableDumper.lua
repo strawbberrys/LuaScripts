@@ -12,11 +12,12 @@ local DumpTable; do
         local TableDump, Ending = {((TableAmount > 0 and "{\n") or "{")}, (((IndentAmount > 1 and TableAmount > 0) and "},\n") or "}")
 
         for Index, Value in pairs(Table) do
+            local ValueType = type(Value)
             Amount = Amount + 1
 
-            local FixedValue = ((type(Value) == "string" or type(Value) == "function") and "\"" .. tostring(Value) .. "\"" or tostring(Value))
-            local Data = ((type(Value) ~= "table" and "[\"" .. tostring(Index) .. "\"] = " .. FixedValue or "[\"" .. tostring(Index) .. "\"] = " .. DumpTable(Value, IndentAmount + 1)))
-            local Key = Indent .. ((type(Value) ~= "table" and Data .. ((Amount ~= TableAmount and ",\n") or "")) or Data)
+            local FixedValue = ((ValueType == "string" or ValueType == "function") and "\"" .. tostring(Value) .. "\"" or tostring(Value))
+            local Data = ((ValueType ~= "table" and "[\"" .. tostring(Index) .. "\"] = " .. FixedValue or "[\"" .. tostring(Index) .. "\"] = " .. DumpTable(Value, IndentAmount + 1)))
+            local Key = Indent .. ((ValueType ~= "table" and Data .. ((Amount ~= TableAmount and ",\n") or "")) or Data)
 
             TableDump[#TableDump + 1] = Key
         end
