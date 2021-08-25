@@ -27,7 +27,7 @@ local function DumpTable(Table, IndentAmount)
         TableDump[#TableDump + 1] = Key
     end
 
-    TableDump[#TableDump + 1] = ((TableAmount > 0 and "\n") or "") .. (((IndentAmount > 1 and TableAmount > 0) and ("    "):rep(IndentAmount - 1) .. Ending or Ending .. ((TableAmount == 0 and ",\n") or "")))
+    TableDump[#TableDump + 1] = ((TableAmount > 0 and "\n") or "") .. (((IndentAmount > 1 and TableAmount > 0) and string_rep("    ", IndentAmount - 1) .. Ending or Ending .. ((TableAmount == 0 and ",\n") or "")))
 
     return table_concat(TableDump)
 end
