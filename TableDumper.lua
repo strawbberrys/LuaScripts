@@ -1,8 +1,14 @@
 -- You can use this as a stand-alone function by removing the return at the end or use it from a module, just run DumpTable(Table) and it will return that table converted to a string
 
+local type = type
+local pairs = pairs
+local tostring = tostring
+local string_rep = string.rep
+local table_concat = table.concat
+
 local function DumpTable(Table, IndentAmount)
     local IndentAmount, TableAmount, Amount = IndentAmount or 1, 0, 0
-    local Indent = ("    "):rep(IndentAmount)
+    local Indent = string_rep("    ", IndentAmount)
 
     for Index in pairs(Table) do
         TableAmount = TableAmount + 1
@@ -23,7 +29,7 @@ local function DumpTable(Table, IndentAmount)
 
     TableDump[#TableDump + 1] = ((TableAmount > 0 and "\n") or "") .. (((IndentAmount > 1 and TableAmount > 0) and ("    "):rep(IndentAmount - 1) .. Ending or Ending .. ((TableAmount == 0 and ",\n") or "")))
 
-    return table.concat(TableDump)
+    return table_concat(TableDump)
 end
 
 return DumpTable
